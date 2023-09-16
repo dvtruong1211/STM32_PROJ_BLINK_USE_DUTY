@@ -29,7 +29,7 @@
 
 
 void blink_config(Blink_Config conf, blinkLevel level){
-	conf.period = (1*1000)/FREQ; //ms
+	conf.period = (1*1000)/FREQ_BLINK; //ms
 	conf.duty = (conf.period * level)/LEVEL_MAX;
 }
 
