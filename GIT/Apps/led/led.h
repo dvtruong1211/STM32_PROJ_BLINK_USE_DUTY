@@ -30,6 +30,8 @@ typedef enum{
 }blinkLevel;
 
 typedef struct{
+	GPIO_TypeDef *port;
+	uint16_t pin;
 	uint32_t duty;
 	uint32_t period;
 }Blink_Config;
@@ -38,16 +40,18 @@ typedef struct{
 
 /* Exported macro ------------------------------------------------------------*/
 
-#define FREQ_BLINK 100 //Hz
+#define FREQ_BLINK 50 //Hz
 
-#define LED_ON
-#define LED_OFF
+#define LED_ON(port, pin)		HAL_GPIO_WritePin(port, pin, GPIO_PIN_SET)
+#define LED_OFF(port, pin)		HAL_GPIO_WritePin(port, pin, GPIO_PIN_RESET)
 
 /* Exported functions ------------------------------------------------------- */
 
-void setLevelBlink();
+void ledBlinkConf(uint8_t ledLevelBlink);
 
+void ledProcessBlink(void);
 
+void ledDimmingProcess(void);
 
 
 

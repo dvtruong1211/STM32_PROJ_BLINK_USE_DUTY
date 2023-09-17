@@ -95,7 +95,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+//	  for(uint8_t level = 0; level <= (uint8_t)LEVEL_MAX; level ++){
+//		  ledBlinkConf(level);
+//		  static uint32_t timeStartBlink;
+//		  timeStartBlink = (uint32_t)HAL_GetTick();
+//		  while((uint32_t)(HAL_GetTick() - timeStartBlink) < 2000){
+//			  ledProcessBlink();
+//			  if((uint32_t)(HAL_GetTick() - timeStartBlink) >= 2000){
+//				  break;
+//			  }
+//		  }
+//	  }
+	  ledDimmingProcess();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -163,20 +174,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, Led1_Pin|Led2_Pin|Led4_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PD12 PD13 PD15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_15;
+  /*Configure GPIO pins : Led1_Pin Led2_Pin Led4_Pin */
+  GPIO_InitStruct.Pin = Led1_Pin|Led2_Pin|Led4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PD14 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14;
+  /*Configure GPIO pin : Led3_Pin */
+  GPIO_InitStruct.Pin = Led3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+  HAL_GPIO_Init(Led3_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

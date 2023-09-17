@@ -1,1 +1,3 @@
-../Apps/led/led.c:31:6:blink_config	24	static
+../Apps/led/led.c:39:6:ledProcessBlink	24	static
+../Apps/led/led.c:53:6:ledBlinkConf	24	static
+../Apps/led/led.c:63:6:ledDimmingProcess	16	static
